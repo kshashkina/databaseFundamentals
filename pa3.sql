@@ -1,22 +1,22 @@
 -- SELECTS
 -- Вибирає всі дані про траси, де ідентифікатор розташування дорівнює ідентифікатору країни "USA".
-SELECT *
+SELECT id, name, length, elevation, description, image_url, location_id
 FROM trail
 WHERE location_id = (SELECT id FROM location WHERE country = 'Argentina');
 
 -- Вибирає всі дані про траси, де ідентифікатор розташування є в ідентифікаторах країни "USA".
-SELECT *
+SELECT id, name, length, elevation, description, image_url, location_id
 FROM trail
 WHERE location_id IN (SELECT id FROM location WHERE country = 'USA');
 
 -- Вибирає всі дані про траси, де ідентифікатор розташування не є в ідентифікаторах країни "USA".
-SELECT *
+SELECT id, name, length, elevation, description, image_url, location_id
 FROM trail
 WHERE location_id NOT IN (SELECT id FROM location WHERE country = 'USA');
 
 
 -- Вибирає всі дані про траси, які мають оцінку 5 або більше.
-SELECT *
+SELECT t.id, t.name, t.length, t.elevation, t.description, t.image_url, t.location_id
 FROM trail t
 WHERE EXISTS (
     SELECT 1
@@ -26,7 +26,7 @@ WHERE EXISTS (
 );
 
 -- Вибирає всі дані про траси, які не мають оцінки більше 5.
-SELECT *
+SELECT t.id, t.name, t.length, t.elevation, t.description, t.image_url, t.location_id
 FROM trail t
 WHERE NOT EXISTS (
     SELECT 1
@@ -36,7 +36,7 @@ WHERE NOT EXISTS (
 );
 
 -- Вибирає всі траси, де довжина дорівнює довжині траси з ідентифікатором 1.
-SELECT *
+SELECT id, name, length, elevation, description, image_url, location_id
 FROM trail
 WHERE length = (
     SELECT length
@@ -45,7 +45,7 @@ WHERE length = (
 );
 
 -- Вибирає всі траси, де довжина є в списку довжин трас у США.
-SELECT *
+SELECT t.id, t.name, t.length, t.elevation, t.description, t.image_url, t.location_id
 FROM trail t
 WHERE t.length IN (
     SELECT length
@@ -54,7 +54,7 @@ WHERE t.length IN (
 );
 
 -- Вибирає всі траси, які не мають такої ж довжини, як жодна з трас у США.
-SELECT *
+SELECT t.id, t.name, t.length, t.elevation, t.description, t.image_url, t.location_id
 FROM trail t
 WHERE t.length NOT IN (
     SELECT length
@@ -63,7 +63,7 @@ WHERE t.length NOT IN (
 );
 
 -- Вибирає всі траси, які мають хоча б одну рецензію.
-SELECT *
+SELECT t.id, t.name, t.length, t.elevation, t.description, t.image_url, t.location_id
 FROM trail t
 WHERE EXISTS (
     SELECT 1
@@ -72,7 +72,7 @@ WHERE EXISTS (
 );
 
 -- Вибирає всі траси, які не мають рецензій.
-SELECT *
+SELECT t.id, t.name, t.length, t.elevation, t.description, t.image_url, t.location_id
 FROM trail t
 WHERE NOT EXISTS (
     SELECT 1
