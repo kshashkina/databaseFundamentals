@@ -73,7 +73,3 @@ INSERT INTO review (user_id, trail_id, title, content, date_posted) VALUES
 
 
 
--- CREATE TABLE location_clone AS SELECT * FROM location;
--- CREATE INDEX idx_country ON location_clone (country);
-
-

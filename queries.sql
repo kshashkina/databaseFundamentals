@@ -18,3 +18,14 @@ LEFT JOIN rating ON trail.id = rating.trail_id
 LEFT JOIN trail_difficulty ON trail.id = trail_difficulty.trail_id
 LEFT JOIN difficulty ON trail_difficulty.difficulty_id = difficulty.id
 GROUP BY trail.id;
+
+CREATE TABLE location_clone AS SELECT * FROM location;
+CREATE INDEX idx_country ON location_clone (country);
+
+SELECT COUNT(*) AS argentina_count
+FROM location
+WHERE country = 'Argentina';
+
+SELECT COUNT(*) AS argentina_count
+FROM location_clone
+WHERE country = 'Argentina';

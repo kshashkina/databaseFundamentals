@@ -26,15 +26,6 @@ CREATE TABLE trail (
     FOREIGN KEY (location_id) REFERENCES location(id) ON DELETE CASCADE
 );
 
--- Create the Trail_Difficulty junction table for the many-to-many relationship
-CREATE TABLE trail_difficulty (
-    trail_id INT,
-    difficulty_id INT,
-    PRIMARY KEY (trail_id, difficulty_id),
-    FOREIGN KEY (trail_id) REFERENCES trail(id) ON DELETE CASCADE,
-    FOREIGN KEY (difficulty_id) REFERENCES difficulty(id) ON DELETE CASCADE
-);
-
 -- Create the User table
 CREATE TABLE user (
     id INT PRIMARY KEY AUTO_INCREMENT,
