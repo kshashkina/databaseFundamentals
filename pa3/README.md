@@ -102,18 +102,30 @@ Subqueries, also known as nested queries or inner queries, allow us to use the r
 30. **Delete Users with No Ratings:**
     - Deletes users who have not left any ratings.
 
-### Set Operations
+### Set Operations:
 
-#### UNION, UNION ALL, INTERSECT, EXCEPT
+#### UNION / UNION ALL / INTERSECT / EXCEPT
 
-The README did not cover these set operations and their respective queries, but they were discussed:
+These set operations allow us to combine, compare, or exclude the result sets of two or more SELECT statements.
 
-- **UNION:** Combines the result sets of two or more SELECT statements, eliminating duplicates.
-- **UNION ALL:** Combines the result sets of two or more SELECT statements, including duplicates.
-- **INTERSECT:** Returns the intersection of two result sets, meaning only the rows that appear in both result sets are returned.
-- **EXCEPT:** Returns the set difference, meaning it returns rows from the first result set that do not appear in the second result set.
+- **UNION:** Combines the result sets of two SELECT statements into a single result set, removing duplicate rows.
+- **UNION ALL:** Combines the result sets of two SELECT statements into a single result set, including duplicate rows.
+- **INTERSECT:** Returns only the rows that appear in both result sets of two SELECT statements.
+- **EXCEPT:** Returns only the distinct rows that appear in the first result set but not in the second result set of two SELECT statements.
 
-These operations were used to perform various data manipulations and optimizations, such as selecting unique values, combining data sets, or finding common elements between result sets.
+#### Examples:
+
+1. **Selecting Unique Countries from the Location Table:**
+   - Combines the unique country names from the "location" table with the unique user names from the "user" table.
+
+2. **Selecting Unique Trail Names and Difficulty Levels:**
+   - Combines the unique trail names from the "trail" table with all difficulty levels from the "difficulty" table, preserving duplicate trail names.
+
+3. **Selecting Trails with High Difficulty and High Ratings:**
+   - Finds trails with difficulty levels 'Hard' or 'Expert' and also have a rating score of 5.
+
+4. **Selecting Trails with Reviews:**
+   - Retrieves all trail names that have reviews associated with them.
 
 ### Bonus Task: Python Script for Database Interaction
 
