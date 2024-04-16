@@ -118,7 +118,7 @@ WHERE NOT EXISTS (
 
 -- Оновлює довжину траси з ідентифікатором 1, щоб вона дорівнювала довжині траси з ідентифікатором 2.
 UPDATE trail t1
-JOIN trail t2 ON t1.id = 1 AND t2.id = 2
+INNER JOIN trail t2 ON t1.id = 1 AND t2.id = 2
 SET t1.length = t2.length;
 
 -- Збільшуємо на 1 оцінку для маршрутів, розташованих в США.
