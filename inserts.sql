@@ -1,19 +1,19 @@
 INSERT INTO location (name, country, region, coordinates) VALUES
-('Glacier National Park', 'USA', 'Montana', POINT(-113.718510, 48.759613)),
-('Grand Canyon', 'USA', 'Arizona', POINT(-112.112997, 36.106965)),
-('Plitvice Lakes', 'Croatia', 'Plitvička Jezera', POINT(15.621374, 44.865397)),
-('Mount Everest', 'Nepal', 'Mahalangur Himal', POINT(86.925018, 27.988121)),
-('Kilimanjaro', 'Tanzania', 'Kilimanjaro Region', POINT(37.355627, -3.067425)),
-('El Chalten', 'Argentina', 'Santa Cruz', POINT(-73.054752, -49.331494)),
-('Machu Picchu', 'Peru', 'Cuzco Region', POINT(-72.544963, -13.163141)),
-('Great Wall of China', 'China', 'Beijing', POINT(116.570375, 40.431908)),
-('Grand Teton', 'USA', 'Wyoming', POINT(-110.802436, 43.790428)),
-('Cinque Terre', 'Italy', 'Liguria', POINT(9.722952, 44.134578)),
-('Great Ocean Road', 'Australia', 'Victoria', POINT(143.3926, -38.680564)),
-('Fjordlands National Park', 'New Zealand', 'Southland', POINT(167.718053, -45.414451)),
-('Blue Mountains', 'Australia', 'New South Wales', POINT(150.311401, -33.409983)),
-('Serengeti National Park', 'Tanzania', 'Mara Region', POINT(34.834808, -2.332805)),
-('Yakushima', 'Japan', 'Kagoshima Prefecture', POINT(130.557116, 30.358501));
+('Glacier National Park', 'USA', 'North America', POINT(-113.718510, 48.759613)),
+('Grand Canyon', 'USA', 'North America', POINT(-112.112997, 36.106965)),
+('Plitvice Lakes', 'Croatia', 'Europe', POINT(15.621374, 44.865397)),
+('Mount Everest', 'Nepal', 'Asia', POINT(86.925018, 27.988121)),
+('Kilimanjaro', 'Tanzania', 'Africa', POINT(37.355627, -3.067425)),
+('El Chalten', 'Argentina', 'South America', POINT(-73.054752, -49.331494)),
+('Machu Picchu', 'Peru', 'South America', POINT(-72.544963, -13.163141)),
+('Great Wall of China', 'China', 'Asia', POINT(116.570375, 40.431908)),
+('Grand Teton', 'USA', 'North America', POINT(-110.802436, 43.790428)),
+('Cinque Terre', 'Italy', 'Europe', POINT(9.722952, 44.134578)),
+('Great Ocean Road', 'Australia', 'Oceania', POINT(143.3926, -38.680564)),
+('Fjordlands National Park', 'New Zealand', 'Oceania', POINT(167.718053, -45.414451)),
+('Blue Mountains', 'Australia', 'Oceania', POINT(150.311401, -33.409983)),
+('Serengeti National Park', 'Tanzania', 'Africa', POINT(34.834808, -2.332805)),
+('Yakushima', 'Japan', 'Asia', POINT(130.557116, 30.358501));
 
 INSERT INTO difficulty (name, description) VALUES
 ('Easy', 'Suitable for most people in fair condition.'),
@@ -37,11 +37,6 @@ INSERT INTO trail (name, length, elevation, description, image_url, location_id)
 ('Blue Mountains Walk', 10, 2000, 'Explore the dramatic scenery of the Blue Mountains.', 'https://[Log in to view URL]', 13),
 ('Serengeti Safari Trek', 50, 200, 'A unique trek through the vast plains of the Serengeti.', 'https://[Log in to view URL]', 14),
 ('Yakushima Forest Trail', 8, 1000, 'Wander through ancient forests in this mystical island.', 'https://[Log in to view URL]', 15);
-
-INSERT INTO trail_difficulty (trail_id, difficulty_id) VALUES
-(1, 1), (2, 2), (3, 1), (4, 3), (5, 3),
-(6, 2), (7, 2), (8, 1), (9, 3), (10, 1),
-(11, 2), (12, 3), (13, 2), (14, 1), (15, 1);
 
 INSERT INTO user (name, email, password, profile) VALUES
 ('Emily Rivera', 'emily.rivera@example.com', 'password', 'Passionate about wildlife photography.'),
@@ -69,7 +64,10 @@ INSERT INTO review (user_id, trail_id, title, content, date_posted) VALUES
 (7, 7, 'Historic and Beautiful', 'Walking the Inca Trail to Machu Picchu is like stepping back in time.', '2023-01-09'),
 (8, 8, 'A Walk Through History', 'The Great Wall is an incredible, once-in-a-lifetime experience.', '2023-02-03'),
 (1, 9, 'Wild and Wonderful', 'The Teton Crest Trail is wild, beautiful, and challenging.', '2023-03-01'),
-(2, 10, 'Italian Riviera Gem', 'The Sentiero Azzurro offers stunning views of the Italian Riviera.', '2023-04-18');
+(2, 10, 'Italian Riviera Gem', 'The Sentiero Azzurro offers stunning views of the Italian Riviera.', '2023-04-18'),
+(2, 10, 'Italian Riviera Gem', 'Catch a glimpse of the captivating Italian Riviera from the Sentiero Azzurro''s panoramic trails.', '2023-04-11'),
+(3, 10, 'Something that you need to see!', 'Experience the mesmerizing beauty of the Italian Riviera as you explore the panoramic trails of the Sentiero Azzurro', '2024-04-11');
+
 
 
 
