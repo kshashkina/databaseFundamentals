@@ -7,6 +7,15 @@ CREATE TABLE location (
     coordinates POINT NOT NULL
 );
 
+-- Create the Trail_Difficulty junction table for the many-to-many relationship
+CREATE TABLE trail_difficulty (
+    trail_id INT,
+    difficulty_id INT,
+    PRIMARY KEY (trail_id, difficulty_id),
+    FOREIGN KEY (trail_id) REFERENCES trail(id) ON DELETE CASCADE,
+    FOREIGN KEY (difficulty_id) REFERENCES difficulty(id) ON DELETE CASCADE
+);
+
 -- Create the difficulty table
 CREATE TABLE difficulty (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -114,6 +123,11 @@ INSERT INTO rating (user_id, trail_id, score) VALUES
 (5, 5, 5), (6, 6, 3), (7, 7, 5), (8, 8, 4),
 (1, 9, 5), (2, 10, 4), (3, 11, 5), (4, 12, 4),
 (5, 13, 5), (6, 14, 4), (7, 15, 5);
+
+INSERT INTO trail_difficulty (trail_id, difficulty_id) VALUES
+(1, 1), (2, 2), (3, 1), (4, 3), (5, 3),
+(6, 2), (7, 2), (8, 1), (9, 3), (10, 1),
+(11, 2), (12, 3), (13, 2), (14, 1), (15, 1);
 
 INSERT INTO review (user_id, trail_id, title, content, date_posted) VALUES
 (1, 1, 'Incredible Views!', 'Absolutely loved this trail, the views are breathtaking.', '2022-07-01'),
