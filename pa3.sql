@@ -189,7 +189,7 @@ WHERE NOT EXISTS (
     SELECT 1
     FROM rating r
     WHERE r.trail_id = t.id
-    AND rating.score >= 5
+    AND r.score >= 5
 );
 
 -- Видаляє всі траси, де довжина дорівнює середній довжині траси у відповідному розташуванні.
