@@ -184,7 +184,7 @@ WHERE EXISTS (
 );
 
 -- Видаляє дані про траси, які не мають оцінки більше 5.
-DELETE FROM trail
+DELETE FROM trail t
 WHERE NOT EXISTS (
     SELECT 1
     FROM rating
