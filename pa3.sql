@@ -188,7 +188,7 @@ DELETE FROM trail t
 WHERE NOT EXISTS (
     SELECT 1
     FROM rating r
-    WHERE rating.trail_id = trail.id
+    WHERE r.trail_id = t.id
     AND rating.score >= 5
 );
 
