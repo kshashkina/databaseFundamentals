@@ -127,7 +127,7 @@ SET score = score + 1
 WHERE trail_id IN (
     SELECT t.id
     FROM trail t
-    JOIN location l ON t.location_id = l.id
+    INNER JOIN location l ON t.location_id = l.id
     WHERE l.country = 'USA'
 );
 
