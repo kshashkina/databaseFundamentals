@@ -1,12 +1,42 @@
-# Task 3: Subqueries, Set Operations, and Bonus Task
+# Task 3: Subqueries, Set Operations, and Connection to database using Python
 
 In this task, we explore subqueries, set operations, and provide a bonus task involving database interaction using Python.
 
-#### Subqueries:
+## Table of Contents
+- [Structure](#structure)
+- [Requirements](#requirements)
+- [Subqueries](#subqueries)
+- [Set Operations](#set-operations)
+- [SQL clauses](#explanation-of-the-sql-clauses)
+- [Python Script for Database Interaction](#bonus-task-python-script-for-database-interaction)
+- [Running Python script](#how-to-run-python-script)
+- [Author](#author)
+- [< Back to main README](https://github.com/kshashkina/databaseFundamentals/blob/main/README.md)
+
+
+### Structure
+- `subqueries.sql`: Includes subquery-related queries.
+- `README.md`: Information about task.
+- `pa3_bonus/`: Directory containing a Python script for connecting to the database and performing CRUD operations.
+  - `pa3_bonus.py`: Python script for bonus task.
+  - `screenshots`: Screenshots that show output of CRUD operations.
+
+### Requirements
+
+You should read main README for this project and have installed MySQL Server, preferred client for this server and created database. Use the following statement to work with database that you have created:
+```mysql
+USE your_schema_name;
+```
+After that you can proceed with the understanding the features.
+
+If you have not proceeded with this, go to the main [README](https://github.com/kshashkina/databaseFundamentals/blob/main/README.md) for this project and go through set up steps.
+
+
+### Subqueries:
 
 Subqueries, also known as nested queries or inner queries, allow us to use the result of one query as the input for another query within the WHERE clause or other parts of a SQL statement. Here's an explanation of each subquery used in this task:
 
-### SELECT Queries
+#### SELECT Queries
 
 1. **Trails in Argentina:**
    - Selects all data about trails where the location identifier equals the identifier of the country "Argentina".
@@ -38,7 +68,7 @@ Subqueries, also known as nested queries or inner queries, allow us to use the r
 10. **Trails with No Reviews:**
     - Selects all trails that do not have any reviews.
 
-### UPDATE Queries
+#### UPDATE Queries
 
 11. **Update Length of Trails in Argentina:**
     - Updates the length of trails in Argentina by increasing it by 10%.
@@ -70,7 +100,7 @@ Subqueries, also known as nested queries or inner queries, allow us to use the r
 20. **Decrease Score by 1 for Trails without Specific Review Title:**
     - Decreases the score by 1 for trails without any review having the title 'Incredible Views!'.
 
-### DELETE Queries
+#### DELETE Queries
 
 21. **Delete Ratings by User 'Carlos Gomez':**
     - Deletes all ratings given by the user with the name 'Carlos Gomez'.
@@ -127,6 +157,130 @@ These set operations allow us to combine, compare, or exclude the result sets of
 4. **Selecting Trails with Reviews:**
    - Retrieves all trail names that have reviews associated with them.
 
+### Explanation of the SQL clauses
+
+Below, I'll provide explanations for each of the listed SQL clauses and examples of how they can be used in SELECT, UPDATE, and DELETE queries.
+
+#### 1. = with non-correlated subqueries result
+This clause is used to compare a value with the result of a non-correlated subquery. It returns true if the value is equal to any value returned by the subquery; otherwise, it returns false.
+
+**Example:**
+```sql
+SELECT * FROM table_name WHERE column_name = (SELECT sub_column FROM sub_table WHERE condition);
+```
+
+#### 2. IN with non-correlated subqueries result
+The IN clause checks whether a value exists in the result set returned by a non-correlated subquery. It returns true if the value is found in the subquery result set; otherwise, it returns false.
+
+**Example:**
+```sql
+SELECT * FROM table_name WHERE column_name IN (SELECT sub_column FROM sub_table WHERE condition);
+```
+
+#### 3. NOT IN with non-correlated subqueries result
+This clause is the negation of the IN clause. It checks whether a value does not exist in the result set returned by a non-correlated subquery. It returns true if the value is not found in the subquery result set; otherwise, it returns false.
+
+**Example:**
+```sql
+SELECT * FROM table_name WHERE column_name NOT IN (SELECT sub_column FROM sub_table WHERE condition);
+```
+
+#### 4. EXISTS with non-correlated subqueries result
+The EXISTS clause is used to check for the existence of rows returned by a non-correlated subquery. It returns true if the subquery returns one or more rows; otherwise, it returns false.
+
+**Example:**
+```sql
+SELECT * FROM table_name WHERE EXISTS (SELECT * FROM sub_table WHERE condition);
+```
+
+#### 5. NOT EXISTS with non-correlated subqueries result
+This clause is the negation of the EXISTS clause. It returns true if the subquery returns no rows; otherwise, it returns false.
+
+**Example:**
+```sql
+SELECT * FROM table_name WHERE NOT EXISTS (SELECT * FROM sub_table WHERE condition);
+```
+
+#### 6. = with correlated subqueries result
+Similar to = with non-correlated subqueries result, but in this case, the subquery references columns from the outer query, creating a correlation between the subquery and the outer query.
+
+**Example:**
+```sql
+SELECT * FROM table_name t WHERE t.column_name = (SELECT sub_column FROM sub_table WHERE sub_table.id = t.id);
+```
+
+#### 7. IN with correlated subqueries result
+Similar to IN with non-correlated subqueries result, but the subquery references columns from the outer query.
+
+**Example:**
+```sql
+SELECT * FROM table_name t WHERE t.column_name IN (SELECT sub_column FROM sub_table WHERE sub_table.id = t.id);
+```
+
+#### 8. NOT IN with correlated subqueries result
+Similar to NOT IN with non-correlated subqueries result, but the subquery references columns from the outer query.
+
+**Example:**
+```sql
+SELECT * FROM table_name t WHERE t.column_name NOT IN (SELECT sub_column FROM sub_table WHERE sub_table.id = t.id);
+```
+
+#### 9. EXISTS with correlated subqueries result
+Similar to EXISTS with non-correlated subqueries result, but the subquery references columns from the outer query.
+
+**Example:**
+```sql
+SELECT * FROM table_name t WHERE EXISTS (SELECT * FROM sub_table WHERE sub_table.id = t.id);
+```
+
+#### 10. NOT EXISTS with correlated subqueries result
+Similar to NOT EXISTS with non-correlated subqueries result, but the subquery references columns from the outer query.
+
+**Example:**
+```sql
+SELECT * FROM table_name t WHERE NOT EXISTS (SELECT * FROM sub_table WHERE sub_table.id = t.id);
+```
+
+#### UNION / UNION ALL / INTERSECT / EXCEPT
+
+- **UNION:** Combines the results of two or more SELECT queries into a single result set, eliminating duplicate rows.
+  
+- **UNION ALL:** Similar to UNION, but it retains duplicate rows from the result sets of individual SELECT queries.
+  
+- **INTERSECT:** Returns only the rows that are common to the result sets of two or more SELECT queries.
+  
+- **EXCEPT:** Returns only the rows that are present in the result set of the first SELECT query but not in the result sets of the subsequent SELECT queries.
+
+**Example (UNION):**
+```sql
+SELECT column1 FROM table1
+UNION
+SELECT column1 FROM table2;
+```
+
+**Example (UNION ALL):**
+```sql
+SELECT column1 FROM table1
+UNION ALL
+SELECT column1 FROM table2;
+```
+
+**Example (INTERSECT):**
+```sql
+SELECT column1 FROM table1
+INTERSECT
+SELECT column1 FROM table2;
+```
+
+**Example (EXCEPT):**
+```sql
+SELECT column1 FROM table1
+EXCEPT
+SELECT column1 FROM table2;
+```
+
+These examples should help you understand each of these clauses effectively in your SQL queries. 
+
 ### Bonus Task: Python Script for Database Interaction
 
 In the bonus task, we provided a Python script demonstrating how to interact with a MySQL database. The script includes functionalities to connect to the database, execute queries, and perform basic CRUD operations (Create, Read, Update, Delete).
@@ -149,5 +303,5 @@ In the bonus task, we provided a Python script demonstrating how to interact wit
 By following these steps, you'll be able to understand and execute the provided SQL queries and Python script for database interaction.
 
 ### Author
-Kateryna Shahkina
+[Kateryna Shahkina](https://github.com/kshashkina)
 ### [< Back to main README](https://github.com/kshashkina/databaseFundamentals/blob/main/README.md) 

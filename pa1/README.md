@@ -1,8 +1,33 @@
-# Task 1: Database Schema and Data Population
+# Database Schema and Data Population
 
 This task involves creating tables for location, difficulty, trail, trail_user, rating, and review, and populating them with sample data.
 
-### SQL Queries:
+## Table of Contents
+- [Structure](#structure)
+- [Requirements](#requirements)
+- [Tables Creation](#tables-creation)
+- [Data Population](#data-population)
+- [Additional Queries](#additional-queries)
+- [How to Run](#how-to-run)
+- [Author](#author)
+- [< Back to main README](https://github.com/kshashkina/databaseFundamentals/blob/main/README.md)
+
+### Structure
+- `schema.sql`: Includes schema-associated queries.
+- `queries.sql`: Includes CRUD operations queries.
+- `README.md`: Information about features.
+
+### Requirements
+
+You should read main README for this project and have installed MySQL Server, preferred client for this server and created database. Use the following statement to work with database that you have created:
+```mysql
+USE your_schema_name;
+```
+After that you can proceed with the understanding the features.
+
+If you have not proceeded with this, go to the main [README](https://github.com/kshashkina/databaseFundamentals/blob/main/README.md) for this project and go through set up steps.
+
+### Tables Creation:
 
 - **Create the location table:** Defines a table to store information about trail locations.
 - **Create the difficulty table:** Defines a table to store information about trail difficulty levels.
@@ -39,6 +64,6 @@ To set up and run the database schema and populate it with sample data:
 Following these steps will create the necessary database schema and populate it with sample data for further analysis and testing.
 
 ### Author
-Kateryna Shahkina
+[Kateryna Shahkina](https://github.com/kshashkina)
 
 ### [< Back to main README](https://github.com/kshashkina/databaseFundamentals/blob/main/README.md) 
