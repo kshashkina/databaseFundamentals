@@ -1,4 +1,4 @@
-## Task 4: Stored Procedures and Python Script for Database Interaction
+## Stored Procedures and Python Script for Database Interaction
 
 This task involves the creation and execution of stored procedures in MySQL to perform various database operations. Additionally, it includes a Python script demonstrating interaction with a MySQL database, showcasing CRUD (Create, Read, Update, Delete) operations.
 

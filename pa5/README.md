@@ -1,4 +1,4 @@
-## Assignment 5: Creating Views for Trails
+## Creating Views for Trails
 
 This assignment involves creating views in a database to select trails from specific regions, namely Europe and North America. Views are virtual tables derived from the result of a SQL query and are stored in the database. Here are the views created:
 

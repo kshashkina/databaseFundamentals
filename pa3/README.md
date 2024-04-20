@@ -1,4 +1,4 @@
-# Task 3: Subqueries, Set Operations, and Connection to database using Python
+# Subqueries, Set Operations, and Connection to database using Python
 
 In this task, we explore subqueries, set operations, and provide a bonus task involving database interaction using Python.
 
